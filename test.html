@@ -1,0 +1,81 @@
+
+<html>
+<head>
+<title>Javascript Troll Site</title>
+<script type="text/javascript">
+loc = 1
+function move_button(){
+	if(loc == 1){
+			b.style.left = 25
+			loc = 2
+	}else if(loc == 2){
+			b.style.left = 360
+			loc = 1
+		}
+}
+count = 5
+counter = setInterval(countdown, 1000)
+
+count2 = 10
+count3 = 1
+count4 = 1
+function countdown(){
+	output = document.getElementById("seconds")
+	output.innerHTML = count
+	count--
+	if(count == 1 ){
+		vibration = setInterval(vibrate, 50)
+	}
+	if(count < 0){
+		clearInterval(counter)
+		clearInterval(vibration)
+		document.getElementById("kitten").src = "explosion.gif"
+		alert_delay = setInterval(aDelay, 1000)
+		return	
+	}	
+	
+}
+function aDelay(){
+	if(count3 == 0){
+		alert("Dammit Nick!  This blood is on your hands.")
+		setInterval(changeBack, 50)
+	}
+	count3--
+}
+function changeBack(){
+	if (count4 == 1){
+		color = "pink"
+		count4 = 2
+	} else if(count4 == 2){
+		color = "blue"
+		count4 = 1
+	}
+	document.body.style.background = color
+}
+function vibrate(){
+	move_kitten()
+	count2--
+}
+function move_kitten(){
+	if(loc == 1){
+			kitten.style.left = 720
+			loc = 2
+	}else if(loc == 2){
+			kitten.style.left = 700
+			loc = 1
+	}
+}
+
+
+</script>
+</head>
+<body>
+<h1 style= "font-size:50"> hah we got your password! </h1>
+<h2 style="font-size:70"> Diffuse the bomb to save the kitten!</h2>
+<div id="b" style="position:absolute; left:360; top:320;">
+	<input type="button" style = "width:300; height:100; font-size: 40;"  value="DIFFUSE" onmouseover="move_button()" />
+</div>
+<p style="font-size:40;"> Time until detonation: <span id = "seconds"> 5 </span> </p> 
+<img id="kitten" src="kitten_bomb_pic.jpg" style="position:absolute; left:700; top: 220; width:500">
+</BODY>
+</html
